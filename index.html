@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >    
+    <head>
+        <title>MyGame</title>
+        <meta charset="UTF-8" >
+        <link rel="stylesheet" href="Style.css">
+    </head>
+    <body>
+
+        <div>  <!-- entire grid inside this div tag -->
+            
+            <!-- row 0 : serving row -->
+            <div class="servingrow0">
+                <div class="cell row0 col0" id="0,0,0"></div>
+                <div class="cell row0 col1" id="0,1,0"></div>
+                <div class="cell row0 col2" id="0,2,0"></div>
+                <div class="cell row0 col3" id="0,3,0"></div>
+                <div class="cell row0 col4" id="0,4,0"></div>
+            </div>
+
+
+                    <!-- row 1 -->
+            <div class="allrow1">
+                <div onclick="clicked(0)" class="cell row1 col0 tile_2" id="1,0,0">2</div>
+                <div onclick="clicked(1)" class="cell row1 col1 tile_4" id="1,1,0">4</div>
+                <div onclick="clicked(2)" class="cell row1 col2 tile_8" id="1,2,0">8</div>
+                <div onclick="clicked(3)" class="cell row1 col3 tile_16" id="1,3,0">16</div>
+                <div onclick="clicked(4)" class="cell row1 col4 tile_32" id="1,4,0">32</div>
+            </div>                
+
+            <!-- row 2 -->
+            <div class="allrow2">
+                <div onclick="clicked(0)" id="2,0,0" class="cell row2 col0 tile_64">64</div>
+                <div onclick="clicked(1)" id="2,1,0" class="cell row2 col1 tile_128">128</div>
+                <div onclick="clicked(2)" id="2,2,0" class="cell row2 col2 tile_256">256</div>
+                <div onclick="clicked(3)" id="2,3,0" class="cell row2 col3 tile_512">512</div>
+                <div onclick="clicked(4)" id="2,4,0" class="cell row2 col4 tile_1024">1024</div>
+                <br>
+            </div>            
+            
+            <!-- row 3 -->
+            <div class="allrow3">
+                <div onclick="clicked(0)" id="3,0,0" class="cell row3 col0 tile_2048">2048</div>
+                <div onclick="clicked(1)" id="3,1,0" class="cell row3 col1 tile_4096">4096</div>
+                <div onclick="clicked(2)" id="3,2,0" class="cell row3 col2 tile_8192">8192</div>
+                <div onclick="clicked(3)" id="3,3,0" class="cell row3 col3 tile_16384">16384</div>
+                <div onclick="clicked(4)" id="3,4,0" class="cell row3 col4 tile_32768">32768</div>
+                <br>
+            </div>            
+            
+            <!-- row 4 -->
+            <div class="allrow4">
+                <div onclick="clicked(0)" id="4,0,0" class="cell row4 col0 tile_65536">65536</div>
+                <div onclick="clicked(1)" id="4,1,0" class="cell row4 col1"></div>
+                <div onclick="clicked(2)" id="4,2,0" class="cell row4 col2"></div>
+                <div onclick="clicked(3)" id="4,3,0" class="cell row4 col3"></div>
+                <div onclick="clicked(4)" id="4,4,0" class="cell row4 col4"></div>
+                <br>
+            </div>            
+            
+            <!-- row 5 -->
+            <div class="allrow5">
+                <div onclick="clicked(0)" id="5,0,0" class="cell row5 col0"></div>
+                <div onclick="clicked(1)" id="5,1,0" class="cell row5 col1"></div>
+                <div onclick="clicked(2)" id="5,2,0" class="cell row5 col2"></div>
+                <div onclick="clicked(3)" id="5,3,0" class="cell row5 col3"></div>
+                <div onclick="clicked(4)" id="5,4,0" class="cell row5 col4"></div>
+                <br>
+            </div>            
+            
+            <!-- row 6 -->
+            <div class="allrow6">
+                <div onclick="clicked(0)" id="6,0,0" class="cell row6 col0"></div>
+                <div onclick="clicked(1)" id="6,1,0" class="cell row6 col1"></div>
+                <div onclick="clicked(2)" id="6,2,0" class="cell row6 col2"></div>
+                <div onclick="clicked(3)" id="6,3,0" class="cell row6 col3"></div>
+                <div onclick="clicked(4)" id="6,4,0" class="cell row6 col4"></div>
+                <br>
+            </div>
+            
+            
+            <!-- row 7 -->
+            <div class="allrow7">
+                <div onclick="clicked(0)" id="7,0,0" class="cell row7 col0"></div>
+                <div onclick="clicked(1)" id="7,1,0" class="cell row7 col1"></div>
+                <div onclick="clicked(2)" id="7,2,0" class="cell row7 col2"></div>
+                <div onclick="clicked(3)" id="7,3,0" class="cell row7 col3"></div>
+                <div onclick="clicked(4)" id="7,4,0" class="cell row7 col4"></div>
+                <br>
+            </div>
+        </div>   <!-- closing div for the whole grid -->
+
+        <button onclick="resetID()">Reset ID (!)</button>
+        <button onclick="resetID()">clear tiles</button>
+
+
+
+
+    </body>
+    <script src=Script.js></script>
+
+</html>
