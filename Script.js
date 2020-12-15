@@ -33,17 +33,11 @@ function GenerateNumber() {
             switch (generated_num) {
                 case 91:
                 case 92:
-                case 93:
-                case 94:
-                case 95:
-                case 96:
-                case 97:
-                    //0.07 chance of 128
-                    return 128;
-                case 98:
-                case 99:
                     //0.02 chance of 256
                     return 256;
+                default:
+                    //0.07 chance of 128
+                    return 128;
             }
 
     }
