@@ -1,7 +1,15 @@
+/**
+ * Generates the number in the following format: 2, 4, 8, 16, 32, 64, 128, 256, 512
+ * smallest number = 2, biggest number = 512
+ */
 function GenerateNumber() {
-    //number in the following 2, 4, 8, 16, 32, 64, 128, 256, 512
+    //generates a random number between 1 and 9
+    let generated_num = Math.floor((Math.random() * 9) + 1);
 
-
+    //converts a number generated into a 2048 standard.
+    // for example if number generated is 9, then 2^9 = 512
+    // if number generated is 1, then 2^1 = 2
+    return pow(2,generated_num); 
 }
 
 //cell ID is a memeber of 3D materix first 2 nubmers for position on the grid 
