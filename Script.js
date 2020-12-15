@@ -12,11 +12,14 @@ function GenerateNumber() {
             //0.01 chance of 512
             return 512;
         case 1:
+            //0.1 chance of 2
+            return 2;
         case 2:
+            //0.1 chance of 4
+            return 4;
         case 6:
-            //0.1 chance of 2, 4, 64
-            // 2 ^ 1 = 2, 2 ^ 2 = 4, 2 ^ 6 = 64
-            return pow(2, generated_num)
+            //0.1 chance of 64
+            return 64;
         case 3:
         case 4:
             //0.2 chance of 8
@@ -39,9 +42,7 @@ function GenerateNumber() {
                     //0.07 chance of 128
                     return 128;
             }
-
     }
-
 }
 
 
@@ -57,6 +58,7 @@ function resetCell(ID) {
 
 
 function mergeR() {  //merge cells to the right
+
 
 }
 
