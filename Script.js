@@ -7,41 +7,48 @@ function GenerateNumber() {
     //generates a random number between 0 and 99
     let generated_num = Math.floor((Math.random() * 100) + 0);
 
-    switch (generated_num[0]) {
+    switch (generated_num) {
         case 0:
             //0.01 chance of 512
             return 512;
         case 1:
-            //0.1 chance of 2
-            return 2;
         case 2:
-            //0.1 chance of 4
-            return 4;
-        case 6:
-            //0.1 chance of 64
-            return 64;
+            //0.02 chance of 256;
+            return 256;
         case 3:
         case 4:
-            //0.2 chance of 8
-            return 8;
         case 5:
         case 6:
-            //0.2 chance of 16
-            return 16;
         case 7:
         case 8:
-            //0.2 chance of 32
-            return 32;
-        default:
-            switch (generated_num) {
-                case 91:
-                case 92:
-                    //0.02 chance of 256
-                    return 256;
-                default:
-                    //0.07 chance of 128
-                    return 128;
+        case 9:
+            //0.07 chance of 128
+            return 128;
+        default: {
+            switch (generated_num[0]) {
+                case 1:
+                    //0.1 chance of 2
+                    return 2;
+                case 2:
+                    //0.1 chance of 4
+                    return 4;
+                case 3:
+                    //0.1 chance of 64
+                    return 64;
+                case 4:
+                case 5:
+                    //0.2 chance of 8
+                    return 8;
+                case 6:
+                case 7:
+                    //0.2 chance of 16
+                    return 16;
+                case 8:
+                case 9:
+                    //0.2 chance of 32
+                    return 32;
             }
+        }
     }
 }
 
