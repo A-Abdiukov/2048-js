@@ -4,12 +4,51 @@ let tiles = [
     {"position":"0-3-0", "tile_value":"tile_8"}   
 ]
 
+let empty_tiles = [
+    {"position":"0-4-0"},
+    {"position":"1-0-0"},
+    {"position":"1-1-0"},
+    {"position":"1-2-0"},
+    {"position":"1-3-0"},
+    {"position":"1-4-0"},
+    {"position":"2-1-0"},
+    {"position":"2-2-0"},
+    {"position":"2-3-0"},
+    {"position":"2-4-0"},
+    {"position":"3-1-0"},
+    {"position":"3-2-0"},
+    {"position":"3-3-0"},
+    {"position":"3-4-0"},
+    {"position":"4-1-0"},
+    {"position":"4-2-0"},
+    {"position":"4-3-0"},
+    {"position":"4-4-0"},
+    {"position":"5-1-0"},
+    {"position":"5-2-0"},
+    {"position":"5-3-0"},
+    {"position":"5-4-0"},
+    {"position":"6-1-0"},
+    {"position":"6-2-0"},
+    {"position":"6-3-0"},
+    {"position":"6-4-0"},
+    {"position":"7-1-0"},
+    {"position":"7-2-0"},
+    {"position":"7-3-0"},
+    {"position":"7-4-0"}
+]
+
+
 function loadTiles(){
     for (i = 0; i < tiles.length; i++) {
         document.getElementById(tiles[i].position).className += " " + tiles[i].tile_value;
     }
 }
 
+function newNumber(){
+    let random_pos = Math.floor((Math.random() * empty_tiles.length) + 0);
+    
+    document.getElementById(empty_tiles[random_pos].position).className += " " + GenerateNumber();
+}
 
 
 
@@ -20,48 +59,47 @@ function loadTiles(){
  */
 function GenerateNumber() {
     //generates a random number between 0 and 99
-    let generated_num = Math.floor((Math.random() * 100) + 0);
-
+    let generated_num = (Math.floor((Math.random() * 100) + 0)).toString();
     switch (generated_num) {
-        case 0:
+        case "0":
             //0.01 chance of 512
-            return 512;
-        case 1:
-        case 2:
+            return "tile_512";
+        case "1":
+        case "2":
             //0.02 chance of 256;
-            return 256;
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
+            return "tile_256";
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
             //0.07 chance of 128
-            return 128;
+            return "tile_128";
         default: {
             switch (generated_num[0]) {
-                case 1:
+                case "1":
                     //0.1 chance of 2
-                    return 2;
-                case 2:
+                    return "tile_2";
+                case "2":
                     //0.1 chance of 4
-                    return 4;
-                case 3:
+                    return "tile_4";
+                case "3":
                     //0.1 chance of 64
-                    return 64;
-                case 4:
-                case 5:
+                    return "tile_64";
+                case "4":
+                case "5":
                     //0.2 chance of 8
-                    return 8;
-                case 6:
-                case 7:
+                    return "tile_8";
+                case "6":
+                case "7":
                     //0.2 chance of 16
-                    return 16;
-                case 8:
-                case 9:
+                    return "tile_16";
+                case "8":
+                case "9":
                     //0.2 chance of 32
-                    return 32;
+                    return "tile_32";
             }
         }
     }
