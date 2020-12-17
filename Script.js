@@ -1,69 +1,69 @@
 let tiles = [
-    {"position":"0-1-0", "tile_value":"tile_2"},
-    {"position":"0-2-0", "tile_value":"tile_4"},
-    {"position":"0-3-0", "tile_value":"tile_8"}   
+    { "position": "0-1-0", "tile_value": "tile_2" },
+    { "position": "0-2-0", "tile_value": "tile_4" },
+    { "position": "0-3-0", "tile_value": "tile_8" }
 ]
 
 let empty_tiles = [
-    {"position":"0-0-0"},
-    {"position":"0-4-0"},
-    {"position":"1-0-0"},
-    {"position":"1-1-0"},
-    {"position":"1-2-0"},
-    {"position":"1-3-0"},
-    {"position":"1-4-0"},
-    {"position":"2-0-0"},
-    {"position":"2-1-0"},
-    {"position":"2-2-0"},
-    {"position":"2-3-0"},
-    {"position":"2-4-0"},
-    {"position":"3-0-0"},
-    {"position":"3-1-0"},
-    {"position":"3-2-0"},
-    {"position":"3-3-0"},
-    {"position":"3-4-0"},
-    {"position":"4-0-0"},
-    {"position":"4-1-0"},
-    {"position":"4-2-0"},
-    {"position":"4-3-0"},
-    {"position":"4-4-0"},
-    {"position":"5-0-0"},
-    {"position":"5-1-0"},
-    {"position":"5-2-0"},
-    {"position":"5-3-0"},
-    {"position":"5-4-0"},
-    {"position":"6-0-0"},
-    {"position":"6-1-0"},
-    {"position":"6-2-0"},
-    {"position":"6-3-0"},
-    {"position":"6-4-0"},
-    {"position":"7-0-0"},
-    {"position":"7-1-0"},
-    {"position":"7-2-0"},
-    {"position":"7-3-0"},
-    {"position":"7-4-0"}
+    { "position": "0-0-0" },
+    { "position": "0-4-0" },
+    { "position": "1-0-0" },
+    { "position": "1-1-0" },
+    { "position": "1-2-0" },
+    { "position": "1-3-0" },
+    { "position": "1-4-0" },
+    { "position": "2-0-0" },
+    { "position": "2-1-0" },
+    { "position": "2-2-0" },
+    { "position": "2-3-0" },
+    { "position": "2-4-0" },
+    { "position": "3-0-0" },
+    { "position": "3-1-0" },
+    { "position": "3-2-0" },
+    { "position": "3-3-0" },
+    { "position": "3-4-0" },
+    { "position": "4-0-0" },
+    { "position": "4-1-0" },
+    { "position": "4-2-0" },
+    { "position": "4-3-0" },
+    { "position": "4-4-0" },
+    { "position": "5-0-0" },
+    { "position": "5-1-0" },
+    { "position": "5-2-0" },
+    { "position": "5-3-0" },
+    { "position": "5-4-0" },
+    { "position": "6-0-0" },
+    { "position": "6-1-0" },
+    { "position": "6-2-0" },
+    { "position": "6-3-0" },
+    { "position": "6-4-0" },
+    { "position": "7-0-0" },
+    { "position": "7-1-0" },
+    { "position": "7-2-0" },
+    { "position": "7-3-0" },
+    { "position": "7-4-0" }
 ]
 
 
-function loadTiles(){
+function loadTiles() {
     for (i = 0; i < tiles.length; i++) {
         document.getElementById(tiles[i].position).className += " " + tiles[i].tile_value;
     }
 }
 
-function newNumber(){
+function newNumber() {
 
-    if(empty_tiles.length > 0){
+    if (empty_tiles.length > 0) {
         let new_position = Math.floor((Math.random() * empty_tiles.length) + 0);
 
         let new_tile_value = GenerateNumber();
-        
+
         document.getElementById(empty_tiles[new_position].position).className += " " + new_tile_value;
-    
-        tiles.push({"position": empty_tiles[new_position].position, "tile_value": new_tile_value },);
-    
-        empty_tiles.splice(new_position,1);
-    } else{
+
+        tiles.push({ "position": empty_tiles[new_position].position, "tile_value": new_tile_value },);
+
+        empty_tiles.splice(new_position, 1);
+    } else {
         alert("Tiles are full. You have lost : (");
     }
 
@@ -157,33 +157,21 @@ function clicked(ID) { //takes the id of the cell that has been clicked
     //if id end with 1 (ie, cell is occuppied, do nothing)
 }
 
-function resetID() {
-
-    var dID; //default ID    
-    var r = 0;    //row index max 7
-    var c = 0;    //col index max 4
-
-    arrCells = document.getElementsByClassName("cell");
-
-    for (i = 0; i <= arrCells.length; i++) {
-
-        while (r < 8) {
-            c = 0;
-            while (c < 5) {
-
-                //dID = '"' + r + ',' + c + ',' + 0 + '"';
-                dID = r + ',' + c + ',' + 0;
-
-                document.getElementsByClassName("cell")[i].id = dID;
-                console.log(dID);
-
-                c++;
-            }
-            r++;
-        }
+function deleteTiles() {
+    for (i = 0; i < tiles.length; i++) {
+        document.getElementById(tiles[i].position).classList.remove(tiles[i].tile_value);
     }
+}
 
-};
+
+function resetID() {
+    if (empty_tiles == 0) {
+        deleteTiles();
+        empty_tiles = tiles;
+        tiles = [];
+        loadTiles();
+    } else (alert("The board is not filled in, please fill it in before pressing clear tiles button"));
+}
 
 
 // TODO : IMPLEMENT SWIPING
