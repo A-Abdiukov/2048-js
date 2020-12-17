@@ -1,13 +1,10 @@
-jQuery.parseJSON(json)
-
-let tiles = [
-    { "position": "0-1-0", "tile_value": "tile_2" },
-    { "position": "0-2-0", "tile_value": "tile_4" },
-    { "position": "0-3-0", "tile_value": "tile_8" }
-]
+let tiles = [];
 
 let empty_tiles = [
     { "position": "0-0-0" },
+    { "position": "0-1-0" },
+    { "position": "0-2-0" },
+    { "position": "0-3-0" },
     { "position": "0-4-0" },
     { "position": "1-0-0" },
     { "position": "1-1-0" },
@@ -44,7 +41,14 @@ let empty_tiles = [
     { "position": "7-2-0" },
     { "position": "7-3-0" },
     { "position": "7-4-0" }
-]
+];
+
+//loads in stuff from cookies
+    if (JSON.parse(localStorage.getItem('filled_tiles')) != null){
+        tiles = JSON.parse(localStorage.getItem('filled_tiles'));
+        empty_tiles = JSON.parse(localStorage.getItem('unfilled_tiles'));
+        loadTiles();
+    }
 
 
 function loadTiles() {
@@ -180,10 +184,10 @@ function resetID() {
 
 window.addEventListener('beforeunload', function (e) {
     tiles_cookie = JSON.stringify(tiles);
-    localStorage.setItem("filled_tiles",tiles_cookie);
+    localStorage.setItem("filled_tiles", tiles_cookie);
     tiles_cookie2 = JSON.stringify(empty_tiles);
-    localStorage.setItem("unfilled_tiles",tiles_cookie2);
-    });
+    localStorage.setItem("unfilled_tiles", tiles_cookie2);
+});
 
 
 
