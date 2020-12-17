@@ -1,0 +1,7 @@
+{
+"tiles": [
+    {"position":"John", "tile_value":2},
+    {"position":"Anna", "tile_value":4},
+    {"position":"Peter", "tile_value":8}
+  ]
+}
