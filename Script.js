@@ -1,12 +1,12 @@
 let tiles = [
-    {"position":"0-1-0", "tile_value":"2"},
-    {"position":"0-2-0", "tile_value":"4"},
-    {"position":"0-3-0", "tile_value":"8"}   
+    {"position":"0-1-0", "tile_value":"tile_2"},
+    {"position":"0-2-0", "tile_value":"tile_4"},
+    {"position":"0-3-0", "tile_value":"tile_8"}   
 ]
 
 function loadTiles(){
     for (i = 0; i < tiles.length; i++) {
-        document.getElementById(tiles[i].position).innerText = tiles[i].tile_value;
+        document.getElementById(tiles[i].position).className += " " + tiles[i].tile_value;
     }
 }
 

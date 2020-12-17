@@ -44,6 +44,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_2::after{
+    content: "2";
+}
+
 .tile_4 {
     background-color:#00e1ff;
     font-size: 25px;
@@ -53,6 +57,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_4::after{
+    content: "4";
+}
+
 .tile_8 {
     background-color:#FFC000;
     font-size: 25px;
@@ -62,6 +70,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_8::after{
+    content: "8";
+}
+
 .tile_16 {
     background-color:#3180ff;
     font-size: 25px;
@@ -71,6 +83,10 @@
     line-height: 50px;
     font-weight:bold;font-weight:bold;font-weight:bold;
 }
+.tile_16::after{
+    content: "16";
+}
+
 .tile_32 {
     background-color:#70AD47;
     font-size: 25px;
@@ -80,6 +96,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_32::after{
+    content: "32";
+}
+
 .tile_64 {
     background-color:#ff8818;
     font-size: 25px;
@@ -89,6 +109,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_64::after{
+    content: "64";
+}
+
 .tile_128 {
     background-color:#B66DFF;
     font-size: 25px;
@@ -98,6 +122,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_128::after{
+    content: "128";
+}
+
 .tile_256 {
     background-color:#6600FF;
     font-size: 25px;
@@ -107,6 +135,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_256::after{
+    content: "256";
+}
+
 .tile_512 {
     background-color:#833C0C;
     font-size: 25px;
@@ -116,6 +148,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_512::after{
+    content: "512";
+}
+
 /* tiles below this point will never be served by the game */
 .tile_1024 {
     background-color:#404040;
@@ -126,6 +162,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_1024::after{
+    content: "1024";
+}
+
 .tile_2048 {
     background-color:#000;
     font-size: 22px;
@@ -135,6 +175,10 @@
     line-height: 50px;    
     font-weight:bold;
 }
+.tile_2048::after{
+    content: "2048";
+}
+
 .tile_4096 {
     background-color:#404040;
     font-size: 21px;
@@ -144,6 +188,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_4096::after{
+    content: "4096";
+}
+
 .tile_8192{
     background-color:#000;
     font-size: 21px;
@@ -153,6 +201,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_8192::after{
+    content: "8192";
+}
+
 .tile_16384{
     background-color:#404040;
     font-size: 18px;
@@ -162,6 +214,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_16384::after{
+    content: "16384";
+}
+
 .tile_32768{
     background-color:#000;
     font-size: 18px;
@@ -171,6 +227,10 @@
     line-height: 50px;
     font-weight:bold;
 }
+.tile_32768::after{
+    content: "32768";
+}
+
 .tile_65536{
     background-color:#000;
     font-size: 18px;
@@ -179,4 +239,7 @@
     font-family:Calibri, Helvetica, sans-serif;
     line-height: 50px;
     font-weight:bold;
+}
+.tile_65536::after{
+    content: "65536";
 }
