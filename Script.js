@@ -1,15 +1,12 @@
 let tiles = [
-    {"position":"John", "value":2},
-    {"position":"Anna", "value":4},
-    {"position":"Peter", "value":8}   
+    {"position":"0-1-0", "tile_value":"2"},
+    {"position":"0-2-0", "tile_value":"4"},
+    {"position":"0-3-0", "tile_value":"8"}   
 ]
 
 function loadTiles(){
     for (i = 0; i < tiles.length; i++) {
-        
-        tiles[i].position =
-
-
+        var x = document.getElementById(tiles[i].position); //= tiles[i].tile_value;
     }
 }
 
