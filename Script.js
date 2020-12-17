@@ -1,4 +1,20 @@
-import {tile} from "tile.json";
+let tiles = [
+    {"position":"John", "value":2},
+    {"position":"Anna", "value":4},
+    {"position":"Peter", "value":8}   
+]
+
+function loadTiles(){
+    for (i = 0; i < tiles.length; i++) {
+        
+        tiles[i].position =
+
+
+    }
+}
+
+
+
 
 /**
  * Generates the number in the following format: 2, 4, 8, 16, 32, 64, 128, 256, 512
