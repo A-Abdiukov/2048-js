@@ -184,3 +184,8 @@ function resetID() {
     }
 
 };
+
+
+// TODO : IMPLEMENT SWIPING
+// https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
+
