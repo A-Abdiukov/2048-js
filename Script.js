@@ -6,7 +6,7 @@ let tiles = [
 
 function loadTiles(){
     for (i = 0; i < tiles.length; i++) {
-        var x = document.getElementById(tiles[i].position); //= tiles[i].tile_value;
+        document.getElementById(tiles[i].position).innerText = tiles[i].tile_value;
     }
 }
 
