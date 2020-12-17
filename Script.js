@@ -1,3 +1,5 @@
+jQuery.parseJSON(json)
+
 let tiles = [
     { "position": "0-1-0", "tile_value": "tile_2" },
     { "position": "0-2-0", "tile_value": "tile_4" },
@@ -173,7 +175,18 @@ function resetID() {
     } else (alert("The board is not filled in, please fill it in before pressing clear tiles button"));
 }
 
+//saving filled and unfilled tiles in cookies
+//next time user loads, the progress won;t dissapear
+
+window.addEventListener('beforeunload', function (e) {
+    tiles_cookie = JSON.stringify(tiles);
+    localStorage.setItem("filled_tiles",tiles_cookie);
+    tiles_cookie2 = JSON.stringify(empty_tiles);
+    localStorage.setItem("unfilled_tiles",tiles_cookie2);
+    });
+
+
+
 
 // TODO : IMPLEMENT SWIPING
 // https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
-
