@@ -5,32 +5,39 @@ let tiles = [
 ]
 
 let empty_tiles = [
+    {"position":"0-0-0"},
     {"position":"0-4-0"},
     {"position":"1-0-0"},
     {"position":"1-1-0"},
     {"position":"1-2-0"},
     {"position":"1-3-0"},
     {"position":"1-4-0"},
+    {"position":"2-0-0"},
     {"position":"2-1-0"},
     {"position":"2-2-0"},
     {"position":"2-3-0"},
     {"position":"2-4-0"},
+    {"position":"3-0-0"},
     {"position":"3-1-0"},
     {"position":"3-2-0"},
     {"position":"3-3-0"},
     {"position":"3-4-0"},
+    {"position":"4-0-0"},
     {"position":"4-1-0"},
     {"position":"4-2-0"},
     {"position":"4-3-0"},
     {"position":"4-4-0"},
+    {"position":"5-0-0"},
     {"position":"5-1-0"},
     {"position":"5-2-0"},
     {"position":"5-3-0"},
     {"position":"5-4-0"},
+    {"position":"6-0-0"},
     {"position":"6-1-0"},
     {"position":"6-2-0"},
     {"position":"6-3-0"},
     {"position":"6-4-0"},
+    {"position":"7-0-0"},
     {"position":"7-1-0"},
     {"position":"7-2-0"},
     {"position":"7-3-0"},
@@ -45,9 +52,21 @@ function loadTiles(){
 }
 
 function newNumber(){
-    let random_pos = Math.floor((Math.random() * empty_tiles.length) + 0);
+
+    if(empty_tiles.length > 0){
+        let new_position = Math.floor((Math.random() * empty_tiles.length) + 0);
+
+        let new_tile_value = GenerateNumber();
+        
+        document.getElementById(empty_tiles[new_position].position).className += " " + new_tile_value;
     
-    document.getElementById(empty_tiles[random_pos].position).className += " " + GenerateNumber();
+        tiles.push({"position": empty_tiles[new_position].position, "tile_value": new_tile_value },);
+    
+        empty_tiles.splice(new_position,1);
+    } else{
+        alert("Tiles are full. You have lost : (");
+    }
+
 }
 
 
