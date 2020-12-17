@@ -1,3 +1,5 @@
+import {tile} from "tile.json";
+
 /**
  * Generates the number in the following format: 2, 4, 8, 16, 32, 64, 128, 256, 512
  * smallest number = 2, biggest number = 512
