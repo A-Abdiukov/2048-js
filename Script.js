@@ -25,7 +25,8 @@ let empty_tiles = [
 ];
 
 //if local storage is not null, tiles[] and empty_tiles[] arrays are loaded from local storage.
-//afterwards loadTiles() function is called
+// where does it load it from? - have a look at window.addEventListener('beforeunload', function (e)
+//afterwards loadTiles() function is called 
 if (JSON.parse(localStorage.getItem('filled_tiles')) != null) {
     tiles = JSON.parse(localStorage.getItem('filled_tiles'));
     empty_tiles = JSON.parse(localStorage.getItem('unfilled_tiles'));
@@ -60,8 +61,8 @@ function newNumber() {
     }
 }
 
-// Generates a tile value number
-//
+// Generates a tile class (or tile_value) number e.g tile_512, tile_256
+// Each number has its own unique chance of appearing (as specified by Naiem)
 function GenerateNumber() {
     let generated_num = (Math.floor((Math.random() * 100) + 0)).toString();
     switch (generated_num) {
@@ -109,24 +110,23 @@ function GenerateNumber() {
     }
 }
 
-//Deletes every tile
-function deleteTiles() {
-    for (i = 0; i < tiles.length; i++) {
-        document.getElementById(tiles[i].position).classList.remove(tiles[i].tile_value);
-    }
-}
-
+// resetID clears every tile 
+// Afterwards all the information get transferred from tiles[] array to empty_tiles[] array
+// tiles[] array gets cleared
 function resetID() {
     if (empty_tiles == 0) {
-        deleteTiles();
+        
+        for (i = 0; i < tiles.length; i++) {
+            document.getElementById(tiles[i].position).classList.remove(tiles[i].tile_value);
+        }
         empty_tiles = tiles;
         tiles = [];
-        loadTiles();
     } else (alert("The board is not filled in, please fill it in before pressing clear tiles button"));
 }
 
-//saving filled and unfilled tiles in cookies
-//next time user loads, the progress won;t dissapear
+// When the user closes the page, before closing the following hapepns:
+// 1. tiles[] array gets added to the local storage as "filled_tiles"
+// 2. empty_tiles[] array gets added to the local storage as "unfilled_tiles"
 
 window.addEventListener('beforeunload', function (e) {
     tiles_cookie = JSON.stringify(tiles);
@@ -134,6 +134,8 @@ window.addEventListener('beforeunload', function (e) {
     tiles_cookie2 = JSON.stringify(empty_tiles);
     localStorage.setItem("unfilled_tiles", tiles_cookie2);
 });
+
+
 
 // TODO : IMPLEMENT SWIPING
 // https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
