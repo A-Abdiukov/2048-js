@@ -141,9 +141,18 @@ window.addEventListener('beforeunload', function (e) {
 // https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
 
 
-//swiping code
+//code that detects user actions
 
-//var element 
+var element = document.getElementById('main_div');
+
+
+Hammer(element).on("swipe", function (event) {
+    alert("swipe!");
+});
+
+
+
+
 
 
 
