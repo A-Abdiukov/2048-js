@@ -143,17 +143,33 @@ window.addEventListener('beforeunload', function (e) {
 
 //code that detects user actions
 
+
+var hammertime = new Hammer(document.body);
+
+hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+
+
 var element = document.getElementById('main');
 
-Hammer(element).on("swipe", function (event) {
-    alert("swipe!");
+
+hammertime.on("swiperight", function (event) {
+    alert("Right swipe!");
 });
 
 
+hammertime.on("swipeleft", function (event) {
+    alert("Left swipe!");
+});
 
 
+hammertime.on("swipedown", function (event) {
+    alert("Down swipe!");
+});
 
-
+hammertime.on("swipeup", function (event) {
+    alert("Up swipe!");
+});
 
 
 //-----------------------------
