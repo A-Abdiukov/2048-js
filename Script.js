@@ -143,8 +143,7 @@ window.addEventListener('beforeunload', function (e) {
 
 //code that detects user actions
 
-var element = document.getElementById('main_div');
-
+var element = document.getElementById('main');
 
 Hammer(element).on("swipe", function (event) {
     alert("swipe!");
