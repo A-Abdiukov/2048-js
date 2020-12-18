@@ -146,25 +146,53 @@ hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 hammertime.on("swiperight", function (event) {
     alert("Right swipe!");
+    mergeR();
 });
 
 
 hammertime.on("swipeleft", function (event) {
     alert("Left swipe!");
+    mergeL();
 });
 
 
 hammertime.on("swipedown", function (event) {
     alert("Down swipe!");
+    mergeD();
 });
 
 hammertime.on("swipeup", function (event) {
     alert("Up swipe!");
+    mergeUp();
 });
 
 //-------------------------
 //-- END OF SWIPING  CODE --
 //-------------------------
+
+
+function mergeR() { 
+
+}
+
+function mergeD() { 
+
+}
+
+function mergeL(){
+
+}
+
+
+function mergeUp(){
+
+}
+
+
+
+
+
+
 
 
 //-----------------------------
@@ -183,16 +211,6 @@ function resetCell(ID) {
 }
 
 
-function mergeR() {  //merge cells to the right
-
-
-
-
-}
-
-function mergeV() {  //merge cells vertically to the bottom
-
-}
 
 function mergeCenter() { //merge 3 horizontal cells into the center
 
