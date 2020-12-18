@@ -6,22 +6,22 @@ let tiles = [];
 //empty_tiles[] contains information about empty tiles, including:
 //1. position - position of empty tiles
 let empty_tiles = [
-    { "position": "0-0-0" }, { "position": "0-1-0" }, { "position": "0-2-0" },
-    { "position": "0-3-0" }, { "position": "0-4-0" },
-    { "position": "1-0-0" }, { "position": "1-1-0" }, { "position": "1-2-0" },
-    { "position": "1-3-0" }, { "position": "1-4-0" },
-    { "position": "2-0-0" }, { "position": "2-1-0" }, { "position": "2-2-0" },
-    { "position": "2-3-0" }, { "position": "2-4-0" },
-    { "position": "3-0-0" }, { "position": "3-1-0" }, { "position": "3-2-0" },
-    { "position": "3-3-0" }, { "position": "3-4-0" },
-    { "position": "4-0-0" }, { "position": "4-1-0" }, { "position": "4-2-0" },
-    { "position": "4-3-0" }, { "position": "4-4-0" },
-    { "position": "5-0-0" }, { "position": "5-1-0" }, { "position": "5-2-0" },
-    { "position": "5-3-0" }, { "position": "5-4-0" },
-    { "position": "6-0-0" }, { "position": "6-1-0" }, { "position": "6-2-0" },
-    { "position": "6-3-0" }, { "position": "6-4-0" },
-    { "position": "7-0-0" }, { "position": "7-1-0" },
-    { "position": "7-2-0" }, { "position": "7-3-0" }, { "position": "7-4-0" }
+    { "position": "0-0" }, { "position": "0-1" }, { "position": "0-2" },
+    { "position": "0-3" }, { "position": "0-4" },
+    { "position": "1-0" }, { "position": "1-1" }, { "position": "1-2" },
+    { "position": "1-3" }, { "position": "1-4" },
+    { "position": "2-0" }, { "position": "2-1" }, { "position": "2-2" },
+    { "position": "2-3" }, { "position": "2-4" },
+    { "position": "3-0" }, { "position": "3-1" }, { "position": "3-2" },
+    { "position": "3-3" }, { "position": "3-4" },
+    { "position": "4-0" }, { "position": "4-1" }, { "position": "4-2" },
+    { "position": "4-3" }, { "position": "4-4" },
+    { "position": "5-0" }, { "position": "5-1" }, { "position": "5-2" },
+    { "position": "5-3" }, { "position": "5-4" },
+    { "position": "6-0" }, { "position": "6-1" }, { "position": "6-2" },
+    { "position": "6-3" }, { "position": "6-4" },
+    { "position": "7-0" }, { "position": "7-1" },
+    { "position": "7-2" }, { "position": "7-3" }, { "position": "7-4" }
 ];
 
 //if local storage is not null, tiles[] and empty_tiles[] arrays are loaded from local storage.
@@ -183,6 +183,8 @@ function resetCell(ID) {
 
 
 function mergeR() {  //merge cells to the right
+
+
 
 
 }
