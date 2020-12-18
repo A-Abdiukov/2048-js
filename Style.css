@@ -85,7 +85,7 @@
     text-align: center;
     font-family:Calibri, Helvetica, sans-serif;
     line-height: 50px;
-    font-weight:bold;font-weight:bold;font-weight:bold;
+    font-weight:bold;
 }
 .tile_16::after{
     content: "16";
