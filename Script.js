@@ -1,89 +1,68 @@
+//tiles[] contains information about occupied tiles, including:
+//1. position - position of occupied tile
+//2. tile_value -  value of occupied tile
 let tiles = [];
 
+//empty_tiles[] contains information about empty tiles, including:
+//1. position - position of empty tiles
 let empty_tiles = [
-    { "position": "0-0-0" },
-    { "position": "0-1-0" },
-    { "position": "0-2-0" },
-    { "position": "0-3-0" },
-    { "position": "0-4-0" },
-    { "position": "1-0-0" },
-    { "position": "1-1-0" },
-    { "position": "1-2-0" },
-    { "position": "1-3-0" },
-    { "position": "1-4-0" },
-    { "position": "2-0-0" },
-    { "position": "2-1-0" },
-    { "position": "2-2-0" },
-    { "position": "2-3-0" },
-    { "position": "2-4-0" },
-    { "position": "3-0-0" },
-    { "position": "3-1-0" },
-    { "position": "3-2-0" },
-    { "position": "3-3-0" },
-    { "position": "3-4-0" },
-    { "position": "4-0-0" },
-    { "position": "4-1-0" },
-    { "position": "4-2-0" },
-    { "position": "4-3-0" },
-    { "position": "4-4-0" },
-    { "position": "5-0-0" },
-    { "position": "5-1-0" },
-    { "position": "5-2-0" },
-    { "position": "5-3-0" },
-    { "position": "5-4-0" },
-    { "position": "6-0-0" },
-    { "position": "6-1-0" },
-    { "position": "6-2-0" },
-    { "position": "6-3-0" },
-    { "position": "6-4-0" },
-    { "position": "7-0-0" },
-    { "position": "7-1-0" },
-    { "position": "7-2-0" },
-    { "position": "7-3-0" },
-    { "position": "7-4-0" }
+    { "position": "0-0-0" }, { "position": "0-1-0" }, { "position": "0-2-0" },
+    { "position": "0-3-0" }, { "position": "0-4-0" },
+    { "position": "1-0-0" }, { "position": "1-1-0" }, { "position": "1-2-0" },
+    { "position": "1-3-0" }, { "position": "1-4-0" },
+    { "position": "2-0-0" }, { "position": "2-1-0" }, { "position": "2-2-0" },
+    { "position": "2-3-0" }, { "position": "2-4-0" },
+    { "position": "3-0-0" }, { "position": "3-1-0" }, { "position": "3-2-0" },
+    { "position": "3-3-0" }, { "position": "3-4-0" },
+    { "position": "4-0-0" }, { "position": "4-1-0" }, { "position": "4-2-0" },
+    { "position": "4-3-0" }, { "position": "4-4-0" },
+    { "position": "5-0-0" }, { "position": "5-1-0" }, { "position": "5-2-0" },
+    { "position": "5-3-0" }, { "position": "5-4-0" },
+    { "position": "6-0-0" }, { "position": "6-1-0" }, { "position": "6-2-0" },
+    { "position": "6-3-0" }, { "position": "6-4-0" },
+    { "position": "7-0-0" }, { "position": "7-1-0" },
+    { "position": "7-2-0" }, { "position": "7-3-0" }, { "position": "7-4-0" }
 ];
 
-//loads in stuff from cookies
-    if (JSON.parse(localStorage.getItem('filled_tiles')) != null){
-        tiles = JSON.parse(localStorage.getItem('filled_tiles'));
-        empty_tiles = JSON.parse(localStorage.getItem('unfilled_tiles'));
-        loadTiles();
-    }
+//if local storage is not null, tiles[] and empty_tiles[] arrays are loaded from local storage.
+//afterwards loadTiles() function is called
+if (JSON.parse(localStorage.getItem('filled_tiles')) != null) {
+    tiles = JSON.parse(localStorage.getItem('filled_tiles'));
+    empty_tiles = JSON.parse(localStorage.getItem('unfilled_tiles'));
+    loadTiles();
+}
 
-
+//populates every tile by getting values from tiles[] array
 function loadTiles() {
     for (i = 0; i < tiles.length; i++) {
         document.getElementById(tiles[i].position).className += " " + tiles[i].tile_value;
     }
 }
 
+// newNumber() function adds a tile to the board
+//1. Checks that there is an empty tile, otherwise displays a message that you have lost
+//2. Assigns a new position where the new tile shall appear (new_tile_position)
+//2.1. new_tile_position is a random generated number between 0 and the length of the empty_tiles array 
+//3. The value of the new tile is generated with GenerateNumber() function (new_tile_value)
+//4. The tile that has (new_tile_position) gets assigned the class (new_tile_value)
+//5. The tile that has was added gets added to the titles[] array
+//6. The tile that has been added gets removed from the empty_tiles[] array
 function newNumber() {
-
     if (empty_tiles.length > 0) {
-        let new_position = Math.floor((Math.random() * empty_tiles.length) + 0);
-
+        let new_tile_position = Math.floor((Math.random() * empty_tiles.length));
         let new_tile_value = GenerateNumber();
 
-        document.getElementById(empty_tiles[new_position].position).className += " " + new_tile_value;
-
-        tiles.push({ "position": empty_tiles[new_position].position, "tile_value": new_tile_value },);
-
-        empty_tiles.splice(new_position, 1);
+        document.getElementById(empty_tiles[new_tile_position].position).className += " " + new_tile_value;
+        tiles.push({ "position": empty_tiles[new_tile_position].position, "tile_value": new_tile_value },);
+        empty_tiles.splice(new_tile_position, 1);
     } else {
-        alert("Tiles are full. You have lost : (");
+        alert("Tiles are full. You have lost :( ");
     }
-
 }
 
-
-
-/**
- * Generates the number in the following format: 2, 4, 8, 16, 32, 64, 128, 256, 512
- * smallest number = 2, biggest number = 512
- * Each number has its own chance of appearing
- */
+// Generates a tile value number
+//
 function GenerateNumber() {
-    //generates a random number between 0 and 99
     let generated_num = (Math.floor((Math.random() * 100) + 0)).toString();
     switch (generated_num) {
         case "0":
@@ -130,6 +109,41 @@ function GenerateNumber() {
     }
 }
 
+//Deletes every tile
+function deleteTiles() {
+    for (i = 0; i < tiles.length; i++) {
+        document.getElementById(tiles[i].position).classList.remove(tiles[i].tile_value);
+    }
+}
+
+function resetID() {
+    if (empty_tiles == 0) {
+        deleteTiles();
+        empty_tiles = tiles;
+        tiles = [];
+        loadTiles();
+    } else (alert("The board is not filled in, please fill it in before pressing clear tiles button"));
+}
+
+//saving filled and unfilled tiles in cookies
+//next time user loads, the progress won;t dissapear
+
+window.addEventListener('beforeunload', function (e) {
+    tiles_cookie = JSON.stringify(tiles);
+    localStorage.setItem("filled_tiles", tiles_cookie);
+    tiles_cookie2 = JSON.stringify(empty_tiles);
+    localStorage.setItem("unfilled_tiles", tiles_cookie2);
+});
+
+// TODO : IMPLEMENT SWIPING
+// https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
+
+
+
+//-----------------------------
+// NOT FINISHED CODE IS BELOW
+//-----------------------------
+
 
 //cell ID is a memeber of 3D materix first 2 nubmers for position on the grid 
 //the third number is 0 for empty cells or 1 for cells occupied by a tile  (row,col,occ)
@@ -162,35 +176,3 @@ function blinkingBorder() { //will be used in the serving row for new tiles unti
 function clicked(ID) { //takes the id of the cell that has been clicked
     //if id end with 1 (ie, cell is occuppied, do nothing)
 }
-
-function deleteTiles() {
-    for (i = 0; i < tiles.length; i++) {
-        document.getElementById(tiles[i].position).classList.remove(tiles[i].tile_value);
-    }
-}
-
-
-function resetID() {
-    if (empty_tiles == 0) {
-        deleteTiles();
-        empty_tiles = tiles;
-        tiles = [];
-        loadTiles();
-    } else (alert("The board is not filled in, please fill it in before pressing clear tiles button"));
-}
-
-//saving filled and unfilled tiles in cookies
-//next time user loads, the progress won;t dissapear
-
-window.addEventListener('beforeunload', function (e) {
-    tiles_cookie = JSON.stringify(tiles);
-    localStorage.setItem("filled_tiles", tiles_cookie);
-    tiles_cookie2 = JSON.stringify(empty_tiles);
-    localStorage.setItem("unfilled_tiles", tiles_cookie2);
-});
-
-
-
-
-// TODO : IMPLEMENT SWIPING
-// https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
