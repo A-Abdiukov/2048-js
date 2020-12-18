@@ -141,6 +141,12 @@ window.addEventListener('beforeunload', function (e) {
 // https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
 
 
+//swiping code
+
+//var element 
+
+
+
 
 //-----------------------------
 // NOT FINISHED CODE IS BELOW
