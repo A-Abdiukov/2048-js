@@ -148,11 +148,6 @@ var hammertime = new Hammer(document.body);
 
 hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
-
-
-var element = document.getElementById('main');
-
-
 hammertime.on("swiperight", function (event) {
     alert("Right swipe!");
 });
