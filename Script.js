@@ -3,6 +3,7 @@
 //2. tile_value -  value of occupied tile
 let tiles = [];
 
+
 //empty_tiles[] contains information about empty tiles, including:
 //1. position - position of empty tiles
 let empty_tiles = [
