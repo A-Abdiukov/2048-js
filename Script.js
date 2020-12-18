@@ -135,14 +135,9 @@ window.addEventListener('beforeunload', function (e) {
     localStorage.setItem("unfilled_tiles", tiles_cookie2);
 });
 
-
-
-// TODO : IMPLEMENT SWIPING
-// https://www.hackdoor.io/articles/build-full-featured-tinder-carousel-vanilla-javascript-cdbb2b786f77
-
-
-//code that detects user actions
-
+//---------------------------------
+//-- CODE THAT IMPLEMENTS SWIPING --
+//---------------------------------
 
 var hammertime = new Hammer(document.body);
 
@@ -165,6 +160,10 @@ hammertime.on("swipedown", function (event) {
 hammertime.on("swipeup", function (event) {
     alert("Up swipe!");
 });
+
+//-------------------------
+//-- END OF SWIPING  CODE --
+//-------------------------
 
 
 //-----------------------------
