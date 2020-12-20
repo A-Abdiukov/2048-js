@@ -146,45 +146,65 @@ hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 hammertime.on("swiperight", function (event) {
     alert("Right swipe!");
-    mergeR();
+    // mergeR();
 });
 
 
 hammertime.on("swipeleft", function (event) {
     alert("Left swipe!");
-    mergeL();
+    // mergeL();
 });
 
 
 hammertime.on("swipedown", function (event) {
     alert("Down swipe!");
-    mergeD();
+    // mergeD();
 });
 
 hammertime.on("swipeup", function (event) {
     alert("Up swipe!");
-    mergeUp();
+    // mergeUp();
 });
 
 //-------------------------
 //-- END OF SWIPING  CODE --
 //-------------------------
 
-
 function mergeR() { 
 
+    for(let i = 1; i<tiles[i].length; i++){
+        
+        if ( (tiles[i].position[0] == tiles[i-1].position[0]) && (tiles[i].tile_value == tiles[i-1].tile_value) ){
+            
+            let tile_number = parseInt(tiles[i].tile_value[5].split('_')[1]);
+
+            tile_number *=2;
+
+            let new_tile = 'tile_' + tile_number;
+
+            empty_tiles.push({"position": tiles[i-1].position});
+            tiles.splice(i-1, 1);
+
+            tiles[i].tile_value = new_tile;
+            
+        }
+
+    }
 }
 
 function mergeD() { 
+
 
 }
 
 function mergeL(){
 
+
 }
 
 
 function mergeUp(){
+
 
 }
 
