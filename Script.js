@@ -176,12 +176,12 @@ hammertime.on("swipeup", function (event) {
 function mergeR() {
 
     var exit_loop = false;
-    for (let i = 0; i < tiles[i].length; i++) {
+    for (let i = 0; i < tiles.length; i++) {
 
         let current_pos = tiles[i].position;
         let current_value = tiles[i].tile_value;
 
-        for (let b = 0; exit_loop != true; b++) {
+        for (let b = 0; exit_loop == false; b++) {
             check_pos = current_pos[0] + '-' + (current_pos[2] + b);
 
             if (tiles.includes(check_pos)) {
@@ -230,6 +230,7 @@ function mergeR() {
 
         }
     }
+    
 }
 
 function mergeD() {
