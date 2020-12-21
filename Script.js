@@ -191,7 +191,7 @@ function mergeR() {
             //and the object position is not CURRENT position
             if (check_pos_object != undefined && check_pos_object.position != current_pos) {
 
-                if (tiles[b].tile_value == current_value) {
+                if (check_pos_object.tile_value == current_value) {
                     //doing the calculation
                     let tile_number = current_value.split('_')[1];
                     tile_number = tile_number * 2;
