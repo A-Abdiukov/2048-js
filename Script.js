@@ -216,7 +216,7 @@ function mergeR() {
                     tiles.push({ "position": new_position, "tile_value": current_value });
                     exit_loop = true;
                 }
-            } else if (empty_tiles.find(obj => obj.position == check_pos))
+            } else if (check_position_number == 5)
             {
                 check_position_number -=1;
                 let new_position = current_pos[0] + '-' + check_position_number;
