@@ -188,7 +188,7 @@ function mergeR() {
 
                 var index_matching_tile = [tiles.indexOf(check_pos)];
 
-                if (tiles[index_matching_tile].tile_value == current_value) {
+                if (tiles[index_matching_tile].tile_value == current_value && tiles[index_matching_tile].position != current_pos) {
                     //doing the calculation
                     let tile_number = parseInt(current_value.split('_')[1]) * 2;
                     let new_tile = 'tile_' + tile_number;
@@ -210,7 +210,7 @@ function mergeR() {
                     document.getElementById(current_pos).classList.remove(current_value);
                     //adding a new array
                     tiles.splice(i, 1);
-                    tiles.push({ "position": new_position, "tile_value": tile_value });
+                    tiles.push({ "position": new_position, "tile_value": current_value });
                     exit_loop = true;
                     }catch{};
                 }
@@ -224,7 +224,7 @@ function mergeR() {
 
                 //adding a new array
                 tiles.splice(i, 1);
-                tiles.push({ "position": new_position, "tile_value": tile_value });
+                tiles.push({ "position": new_position, "tile_value": current_value });
                 exit_loop = true;
             }
 
