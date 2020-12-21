@@ -181,8 +181,10 @@ function mergeR() {
         let current_pos = tiles[i].position;
         let current_value = tiles[i].tile_value;
 
-        for (let b = 0; exit_loop == false; b++) {
-            check_pos = current_pos[0] + '-' + parseInt((current_pos[2] + b));
+        for (let b = 1; exit_loop == false; b++) {
+
+            let check_position_number = +current_pos[2] + +parseInt(b)
+            check_pos = current_pos[0] + '-' + check_position_number;
 
             if (tiles.includes(check_pos)) {
 
@@ -190,7 +192,8 @@ function mergeR() {
 
                 if (tiles[index_matching_tile].tile_value == current_value && tiles[index_matching_tile].position != current_pos) {
                     //doing the calculation
-                    let tile_number = parseInt(current_value.split('_')[1]) * 2;
+                    let tile_number = current_value.split('_')[1];
+                    tile_number = tile_number * 2;
                     let new_tile = 'tile_' + tile_number;
                     //removing the destroyed tile
                     empty_tiles.push({ "position": current_pos });
@@ -202,9 +205,9 @@ function mergeR() {
                     exit_loop = true;
                 } 
                 else {
-                    let new_position = current_pos[0] + '-' + parseInt((current_pos[2] + b - 1));
+                    check_position_number -=1;
+                    let new_position = current_pos[0] + '-' + check_position_number;
                     //removing the empty array
-                    try{
                     var empty_tile_to_remove = empty_tiles.indexOf(new_position);
                     empty_tiles.splice(empty_tile_to_remove, 1);
                     document.getElementById(current_pos).classList.remove(current_value);
@@ -212,10 +215,10 @@ function mergeR() {
                     tiles.splice(i, 1);
                     tiles.push({ "position": new_position, "tile_value": current_value });
                     exit_loop = true;
-                    }catch{};
                 }
-            } else if (empty_tiles.includes(check_pos) == false) {
-                let new_position = current_pos[0] + '-' + parseInt((current_pos[2] + b - 1));
+            } else if (empty_tiles.includes(check_pos) == false && tiles.includes(check_pos) == false) {
+                check_position_number -=1;
+                let new_position = current_pos[0] + '-' + check_position_number;
 
                 //removing the empty array
                 var empty_tile_to_remove = empty_tiles.indexOf(new_position);
