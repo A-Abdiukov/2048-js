@@ -179,21 +179,19 @@ function mergeR() {
         let current_pos = tiles[i].position;
         let current_value = tiles[i].tile_value;
 
-
-        for (let b = 1; b < 5; b++) {
-
+        for (let b = 0; b < 5; b++) {
             let check_position_number = +current_pos[2] + +parseInt(b)
             let check_pos = current_pos[0] + '-' + check_position_number;
             let check_pos_object = tiles.find(obj => obj.position == check_pos);
 
-            //if the object can be found in the tiles array
+            //if the object has the same value
             //and the object position is not CURRENT position
             if (check_pos_object != undefined ) {
                 if ( check_pos_object.position != current_pos &&
                     check_pos_object.tile_value == current_value) {
                     //doing the calculation
                     let tile_number = current_value.split('_')[1];
-                    tile_number = tile_number * 2;
+                    tile_number *=2;
                     let new_tile = 'tile_' + tile_number;
                     //removing the destroyed tile
                     empty_tiles.push({ "position": current_pos });
@@ -202,11 +200,11 @@ function mergeR() {
                     //changing the tile value
                     check_pos_object.tile_value = new_tile;
                 }
+
             } else {
                 //removing the empty array
                 let index = empty_tiles.findIndex(obj => obj.position == check_pos);
                 if (index != -1) {
-
                     //removing 
                     empty_tiles.splice(index, 1);
                     document.getElementById(current_pos).classList.remove(current_value);
@@ -215,14 +213,15 @@ function mergeR() {
                     //adding to arrays
                     tiles.push({ "position": check_pos, "tile_value": current_value });
                     empty_tiles.push({ "position": current_pos });
+
+                    //assigning the new posititon
+                    current_pos = check_pos;
                 }
 
             }
 
         }
     }
-
-    //need to execute code here
 
 }
 
