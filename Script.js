@@ -147,8 +147,9 @@ var hammertime = new Hammer(document.body);
 hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 hammertime.on("swiperight", function (event) {
-    alert("Right swipe!");
     mergeR();
+    loadTiles();
+    alert("Right swipe!");
 });
 
 
@@ -229,7 +230,6 @@ function mergeR() {
 
         }
     }
-    loadTiles();
 }
 
 function mergeD() {
