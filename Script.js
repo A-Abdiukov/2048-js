@@ -148,7 +148,7 @@ hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 hammertime.on("swiperight", function (event) {
     alert("Right swipe!");
-    // mergeR();
+    mergeR();
 });
 
 
@@ -185,50 +185,51 @@ function mergeR() {
 
             if (tiles.includes(check_pos)) {
 
-                var index_matching_tile =[tiles.indexOf(check_pos)];
+                var index_matching_tile = [tiles.indexOf(check_pos)];
 
                 if (tiles[index_matching_tile].tile_value == current_value) {
-
                     //doing the calculation
-                    let tile_number = parseInt(current_value.split('_')[1]) * 2 ;
+                    let tile_number = parseInt(current_value.split('_')[1]) * 2;
                     let new_tile = 'tile_' + tile_number;
-
                     //removing the destroyed tile
-                    empty_tiles.push({ "position": current_pos});
+                    empty_tiles.push({ "position": current_pos });
+                    document.getElementById(current_pos).classList.remove(current_value);
                     tiles.splice(i, 1);
-
+                    
                     //changing the tile value
                     tiles[index_matching_tile].tile_value = new_tile;
-
                     exit_loop = true;
-                } else {
+                } 
+                else {
                     let new_position = current_pos[0] + '-' + (current_pos[2] + b - 1);
-
                     //removing the empty array
+                    try{
                     var empty_tile_to_remove = empty_tiles.indexOf(new_position);
                     empty_tiles.splice(empty_tile_to_remove, 1);
-    
+                    document.getElementById(current_pos).classList.remove(current_value);
                     //adding a new array
                     tiles.splice(i, 1);
                     tiles.push({ "position": new_position, "tile_value": tile_value });
-                    exit_loop=true;
+                    exit_loop = true;
+                    }catch{};
                 }
-
             } else if (empty_tiles.includes(check_pos) == false) {
                 let new_position = current_pos[0] + '-' + (current_pos[2] + b - 1);
 
                 //removing the empty array
                 var empty_tile_to_remove = empty_tiles.indexOf(new_position);
                 empty_tiles.splice(empty_tile_to_remove, 1);
+                document.getElementById(current_pos).classList.remove(current_value);
 
                 //adding a new array
                 tiles.splice(i, 1);
                 tiles.push({ "position": new_position, "tile_value": tile_value });
-                exit_loop=true;
+                exit_loop = true;
             }
 
         }
     }
+    loadTiles();
 }
 
 function mergeD() {
