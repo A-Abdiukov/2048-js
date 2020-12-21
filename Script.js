@@ -111,12 +111,14 @@ function GenerateNumber() {
     }
 }
 
+
+
 // resetID clears every tile 
 // Afterwards all the information get transferred from tiles[] array to empty_tiles[] array
 // tiles[] array gets cleared
 function resetID() {
     if (empty_tiles == 0) {
-        
+
         for (i = 0; i < tiles.length; i++) {
             document.getElementById(tiles[i].position).classList.remove(tiles[i].tile_value);
         }
@@ -170,40 +172,77 @@ hammertime.on("swipeup", function (event) {
 //-- END OF SWIPING  CODE --
 //-------------------------
 
-function mergeR() { 
+function mergeR() {
 
-    for(let i = 1; i<tiles[i].length; i++){
-        
-        if ( (tiles[i].position[0] == tiles[i-1].position[0]) && (tiles[i].tile_value == tiles[i-1].tile_value) ){
-            
-            let tile_number = parseInt(tiles[i].tile_value[5].split('_')[1]);
+    var exit_loop = false;
+    for (let i = 0; i < tiles[i].length; i++) {
 
-            tile_number *=2;
+        let current_pos = tiles[i].position;
+        let current_value = tiles[i].tile_value;
 
-            let new_tile = 'tile_' + tile_number;
+        for (let b = 0; exit_loop != true; b++) {
+            check_pos = current_pos[0] + '-' + (current_pos[2] + b);
 
-            empty_tiles.push({"position": tiles[i-1].position});
-            tiles.splice(i-1, 1);
+            if (tiles.includes(check_pos)) {
 
-            tiles[i].tile_value = new_tile;
-            
+                var index_matching_tile =[tiles.indexOf(check_pos)];
+
+                if (tiles[index_matching_tile].tile_value == current_value) {
+
+                    //doing the calculation
+                    let tile_number = parseInt(current_value.split('_')[1]) * 2 ;
+                    let new_tile = 'tile_' + tile_number;
+
+                    //removing the destroyed tile
+                    empty_tiles.push({ "position": current_pos});
+                    tiles.splice(i, 1);
+
+                    //changing the tile value
+                    tiles[index_matching_tile].tile_value = new_tile;
+
+                    exit_loop = true;
+                } else {
+                    let new_position = current_pos[0] + '-' + (current_pos[2] + b - 1);
+
+                    //removing the empty array
+                    var empty_tile_to_remove = empty_tiles.indexOf(new_position);
+                    empty_tiles.splice(empty_tile_to_remove, 1);
+    
+                    //adding a new array
+                    tiles.splice(i, 1);
+                    tiles.push({ "position": new_position, "tile_value": tile_value });
+                    exit_loop=true;
+                }
+
+            } else if (empty_tiles.includes(check_pos) == false) {
+                let new_position = current_pos[0] + '-' + (current_pos[2] + b - 1);
+
+                //removing the empty array
+                var empty_tile_to_remove = empty_tiles.indexOf(new_position);
+                empty_tiles.splice(empty_tile_to_remove, 1);
+
+                //adding a new array
+                tiles.splice(i, 1);
+                tiles.push({ "position": new_position, "tile_value": tile_value });
+                exit_loop=true;
+            }
+
         }
-
     }
 }
 
-function mergeD() { 
+function mergeD() {
 
 
 }
 
-function mergeL(){
+function mergeL() {
 
 
 }
 
 
-function mergeUp(){
+function mergeUp() {
 
 
 }
