@@ -149,7 +149,6 @@ hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 hammertime.on("swiperight", function (event) {
     mergeR();
     loadTiles();
-    alert("Right swipe!");
 });
 
 
@@ -181,7 +180,7 @@ function mergeR() {
         let current_value = tiles[i].tile_value;
 
 
-        for (let b = 1; b < 6; b++) {
+        for (let b = 1; b < 5; b++) {
 
             let check_position_number = +current_pos[2] + +parseInt(b)
             let check_pos = current_pos[0] + '-' + check_position_number;
@@ -189,9 +188,9 @@ function mergeR() {
 
             //if the object can be found in the tiles array
             //and the object position is not CURRENT position
-            if (check_pos_object != undefined && check_pos_object.position != current_pos) {
-
-                if (check_pos_object.tile_value == current_value) {
+            if (check_pos_object != undefined ) {
+                if ( check_pos_object.position != current_pos &&
+                    check_pos_object.tile_value == current_value) {
                     //doing the calculation
                     let tile_number = current_value.split('_')[1];
                     tile_number = tile_number * 2;
@@ -200,41 +199,22 @@ function mergeR() {
                     empty_tiles.push({ "position": current_pos });
                     document.getElementById(current_pos).classList.remove(current_value);
                     tiles.splice(i, 1);
-
                     //changing the tile value
                     check_pos_object.tile_value = new_tile;
                 }
-                else {
-                    check_position_number -= 1;
-                    let new_position = current_pos[0] + '-' + check_position_number;
-
-                    //removing the empty tiles
-                    let index = empty_tiles.findIndex(obj => obj.position == new_position);
-
-                    if(index != -1){
-                        empty_tiles.splice(index, 1);
-                        document.getElementById(current_pos).classList.remove(current_value);
-                        //adding a new array
-                        tiles.splice(i, 1);
-                        tiles.push({ "position": new_position, "tile_value": current_value });
-                    }
-                }
-
-                //this is operational
-            } else if (check_position_number == 5) {
-                check_position_number -= 1;
-                let new_position = current_pos[0] + '-' + check_position_number;
-
+            } else {
                 //removing the empty array
-                let index = empty_tiles.findIndex(obj => obj.position == new_position);
-
+                let index = empty_tiles.findIndex(obj => obj.position == check_pos);
                 if (index != -1) {
+
+                    //removing 
                     empty_tiles.splice(index, 1);
                     document.getElementById(current_pos).classList.remove(current_value);
-
-                    //adding a new array
                     tiles.splice(i, 1);
-                    tiles.push({ "position": new_position, "tile_value": current_value });
+
+                    //adding to arrays
+                    tiles.push({ "position": check_pos, "tile_value": current_value });
+                    empty_tiles.push({ "position": current_pos });
                 }
 
             }
