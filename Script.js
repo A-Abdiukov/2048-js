@@ -186,7 +186,7 @@ function mergeR() {
             let check_position_number = +current_pos[2] + +parseInt(b)
             check_pos = current_pos[0] + '-' + check_position_number;
 
-            if (tiles.includes(check_pos)) {
+            if (tiles.find(obj => obj.position == check_pos)) {
 
                 var index_matching_tile = [tiles.indexOf(check_pos)];
 
@@ -216,7 +216,8 @@ function mergeR() {
                     tiles.push({ "position": new_position, "tile_value": current_value });
                     exit_loop = true;
                 }
-            } else if (empty_tiles.includes(check_pos) == false && tiles.includes(check_pos) == false) {
+            } else if (empty_tiles.find(obj => obj.position == check_pos))
+            {
                 check_position_number -=1;
                 let new_position = current_pos[0] + '-' + check_position_number;
 
