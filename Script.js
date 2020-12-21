@@ -182,7 +182,7 @@ function mergeR() {
         let current_value = tiles[i].tile_value;
 
         for (let b = 0; exit_loop == false; b++) {
-            check_pos = current_pos[0] + '-' + (current_pos[2] + b);
+            check_pos = current_pos[0] + '-' + parseInt((current_pos[2] + b));
 
             if (tiles.includes(check_pos)) {
 
@@ -202,7 +202,7 @@ function mergeR() {
                     exit_loop = true;
                 } 
                 else {
-                    let new_position = current_pos[0] + '-' + (current_pos[2] + b - 1);
+                    let new_position = current_pos[0] + '-' + parseInt((current_pos[2] + b - 1));
                     //removing the empty array
                     try{
                     var empty_tile_to_remove = empty_tiles.indexOf(new_position);
@@ -215,7 +215,7 @@ function mergeR() {
                     }catch{};
                 }
             } else if (empty_tiles.includes(check_pos) == false) {
-                let new_position = current_pos[0] + '-' + (current_pos[2] + b - 1);
+                let new_position = current_pos[0] + '-' + parseInt((current_pos[2] + b - 1));
 
                 //removing the empty array
                 var empty_tile_to_remove = empty_tiles.indexOf(new_position);
