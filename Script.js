@@ -175,22 +175,20 @@ hammertime.on("swipeup", function (event) {
 
 function mergeR() {
 
-    var exit_loop = false;
-    
     for (let i = 0; i < tiles.length; i++) {
 
         let current_pos = tiles[i].position;
         let current_value = tiles[i].tile_value;
 
-        for (let b = 1; exit_loop == false; b++) {
+
+        for (let b = 1; b < 6; b++) {
 
             let check_position_number = +current_pos[2] + +parseInt(b)
             let check_pos = current_pos[0] + '-' + check_position_number;
             let check_pos_object = tiles.find(obj => obj.position == check_pos);
-           
+
             //if the object can be found in the tiles array
             //and the object position is not CURRENT position
-            //fixed
             if (check_pos_object != undefined && check_pos_object.position != current_pos) {
 
                 if (tiles[b].tile_value == current_value) {
@@ -202,47 +200,50 @@ function mergeR() {
                     empty_tiles.push({ "position": current_pos });
                     document.getElementById(current_pos).classList.remove(current_value);
                     tiles.splice(i, 1);
-                    
+
                     //changing the tile value
                     check_pos_object.tile_value = new_tile;
-                    exit_loop = true;
                 }
-                //not fixed
                 else {
-                    check_position_number -=1;
+                    check_position_number -= 1;
                     let new_position = current_pos[0] + '-' + check_position_number;
-                    
+
                     //removing the empty tiles
                     let index = empty_tiles.findIndex(obj => obj.position == new_position);
-                    empty_tiles.splice(index, 1);
-                    document.getElementById(current_pos).classList.remove(current_value);
-                    //adding a new array
-                    tiles.splice(i, 1);
-                    tiles.push({ "position": new_position, "tile_value": current_value });
-                    exit_loop = true;
+
+                    if(index != -1){
+                        empty_tiles.splice(index, 1);
+                        document.getElementById(current_pos).classList.remove(current_value);
+                        //adding a new array
+                        tiles.splice(i, 1);
+                        tiles.push({ "position": new_position, "tile_value": current_value });
+                    }
                 }
 
-            //part below is not fixed
-            } else if (check_position_number == 5)
-            {
-                check_position_number -=1;
+                //this is operational
+            } else if (check_position_number == 5) {
+                check_position_number -= 1;
                 let new_position = current_pos[0] + '-' + check_position_number;
 
                 //removing the empty array
                 let index = empty_tiles.findIndex(obj => obj.position == new_position);
 
-                empty_tiles.splice(index, 1);
-                document.getElementById(current_pos).classList.remove(current_value);
+                if (index != -1) {
+                    empty_tiles.splice(index, 1);
+                    document.getElementById(current_pos).classList.remove(current_value);
 
-                //adding a new array
-                tiles.splice(i, 1);
-                tiles.push({ "position": new_position, "tile_value": current_value });
-                exit_loop = true;
+                    //adding a new array
+                    tiles.splice(i, 1);
+                    tiles.push({ "position": new_position, "tile_value": current_value });
+                }
+
             }
 
         }
     }
-    
+
+    //need to execute code here
+
 }
 
 function mergeD() {
