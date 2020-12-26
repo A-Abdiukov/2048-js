@@ -190,11 +190,11 @@ function mergeR() {
             //if it is an empty tile
             if (empty_tiles_checkPos_index != -1) {
                 //adding an object
-                tiles.push({ "position": check_pos, "tile_value": current_value });
+                tiles.concat({ "position": check_pos, "tile_value": current_value });
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.push({ "position": current_pos })
+                empty_tiles.push({ "position": current_pos });
 
                 empty_tiles.splice(empty_tiles_checkPos_index, 1);
                 tiles.splice(i, 1);
@@ -247,7 +247,7 @@ function mergeL() {
             //if it is an empty tile
             if (empty_tiles_checkPos_index != -1) {
                 //adding an object
-                tiles.push({ "position": check_pos, "tile_value": current_value });
+                tiles.concat({ "position": check_pos, "tile_value": current_value });
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
