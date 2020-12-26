@@ -154,10 +154,9 @@ hammertime.on("swiperight", function (event) {
 
 
 hammertime.on("swipeleft", function (event) {
-    alert("Left swipe!");
     mergeL();
     loadTiles();
-
+    alert("Left swipe!");
 });
 
 
@@ -201,23 +200,21 @@ function mergeR() {
             }
             //if it is not an empty tile
             else {
-                find_tile = tiles.find(obj => obj.position == check_pos);
-                try {
-                    if (find_tile.tile_value == current_value) {
-                        //setting the tile
-                        let tile_number = current_value.split('_')[1];
-                        let new_tile = 'tile_' + tile_number * 2;
-                        find_tile.tile_value = new_tile;
+                find_tile = tiles.findIndex(obj => obj.position == check_pos);
+                if (tiles[find_tile].tile_value == current_value) {
+                    //setting the tile
+                    let tile_number = current_value.split('_')[1];
+                    let new_tile = 'tile_' + tile_number * 2;
+                    tiles[find_tile].tile_value = new_tile;
 
-                        //removing the tile
-                        empty_tiles.push({ "position": current_pos })
-                        document.getElementById(current_pos).classList.remove(current_value);
-                        tiles.splice(i, 1);
+                    //removing the tile
+                    empty_tiles.push({ "position": current_pos })
+                    document.getElementById(current_pos).classList.remove(current_value);
+                    tiles.splice(i, 1);
 
-                        //reducing i by 1, as we removed 1 tile
-                        i--;
-                    }
-                } catch { };
+                    //reducing i by 1, as we removed 1 tile
+                    i--;
+                }
                 //exiting the loop by stating that b = 5
                 b = 5;
             }
@@ -256,23 +253,21 @@ function mergeL() {
             }
             //if it is not an empty tile
             else {
-                find_tile = tiles.find(obj => obj.position == check_pos);
-                try {
-                    if (find_tile.tile_value == current_value) {
-                        //setting the tile
-                        let tile_number = current_value.split('_')[1];
-                        let new_tile = 'tile_' + tile_number * 2;
-                        find_tile.tile_value = new_tile;
+                find_tile = tiles.findIndex(obj => obj.position == check_pos);
+                if (tiles[find_tile].tile_value == current_value) {
+                    //setting the tile
+                    let tile_number = current_value.split('_')[1];
+                    let new_tile = 'tile_' + tile_number * 2;
+                    tiles[find_tile].tile_value = new_tile;
 
-                        //removing the tile
-                        document.getElementById(current_pos).classList.remove(current_value);
-                        empty_tiles.push({ "position": current_pos })
-                        tiles.splice(i, 1);
+                    //removing the tile
+                    document.getElementById(current_pos).classList.remove(current_value);
+                    empty_tiles.push({ "position": current_pos })
+                    tiles.splice(i, 1);
 
-                        //reducing i by 1, as we removed 1 tile
-                        i--;
-                    }
-                } catch { };
+                    //reducing i by 1, as we removed 1 tile
+                    i--;
+                }
                 //exiting the loop by stating that b = -1
                 b = -1;
             }
