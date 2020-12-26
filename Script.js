@@ -189,7 +189,6 @@ function mergeR() {
         for (let b = +current_pos.charAt(2) + 1; b < 5; b++) {
             //checking
             let check_pos = current_pos[0] + current_pos[1] + b;
-            
             let empty_tiles_checkPos_index = empty_tiles.findIndex(obj => obj.position == check_pos);
 
             //if it is an empty tile
@@ -199,27 +198,32 @@ function mergeR() {
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
+                empty_tiles.push({"position":current_pos})
 
                 empty_tiles.splice(empty_tiles_checkPos_index, 1);
                 tiles.splice(i, 1);
 
+                //resetting i
                 i = tiles.findIndex(obj => obj.position == check_pos);
+                current_pos = tiles[i].position;
+                current_value = tiles[i].tile_value;
             }
             //if it is not an empty tile
             else {
                 find_tile = tiles.find(obj => obj.position == check_pos);
-                try{
-                if (find_tile.tile_value == current_value) {
-                    //setting the tile
-                    let tile_number = current_value.split('_')[1];
-                    let new_tile = 'tile_' + tile_number * 2;
-                    find_tile.tile_value = new_tile;
+                try {
+                    if (find_tile.tile_value == current_value) {
+                        //setting the tile
+                        let tile_number = current_value.split('_')[1];
+                        let new_tile = 'tile_' + tile_number * 2;
+                        find_tile.tile_value = new_tile;
 
-                    //removing the tile
-                    document.getElementById(current_pos).classList.remove(current_value);
-                    tiles.splice(i, 1);
-                }
-            }catch{};
+                        //removing the tile
+                        empty_tiles.push({"position":current_pos})
+                        document.getElementById(current_pos).classList.remove(current_value);
+                        tiles.splice(i, 1);
+                    }
+                } catch { };
                 //exiting the loop by stating that b = 5
                 b = 5;
             }
