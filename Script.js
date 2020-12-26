@@ -213,6 +213,9 @@ function mergeR() {
                         empty_tiles.push({ "position": current_pos })
                         document.getElementById(current_pos).classList.remove(current_value);
                         tiles.splice(i, 1);
+
+                        //reducing i by 1, as we removed 1 tile
+                        i--;
                     }
                 } catch { };
                 //exiting the loop by stating that b = 5
@@ -262,9 +265,12 @@ function mergeL() {
                         find_tile.tile_value = new_tile;
 
                         //removing the tile
-                        empty_tiles.push({ "position": current_pos })
                         document.getElementById(current_pos).classList.remove(current_value);
+                        empty_tiles.push({ "position": current_pos })
                         tiles.splice(i, 1);
+
+                        //reducing i by 1, as we removed 1 tile
+                        i--;
                     }
                 } catch { };
                 //exiting the loop by stating that b = -1
