@@ -192,8 +192,8 @@ function mergeR() {
 
                 //removing and adding
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.splice(empty_tiles_checkPos_index, 1, {"position": current_pos});
-                tiles.splice(i,1,{"position": check_pos, "tile_value": current_value} );
+                empty_tiles.splice(empty_tiles_checkPos_index, 1, { "position": current_pos });
+                tiles.splice(i, 1, { "position": check_pos, "tile_value": current_value });
 
                 //resetting i
                 i = tiles.findIndex(obj => obj.position == check_pos);
@@ -244,8 +244,8 @@ function mergeL() {
 
                 //removing and adding
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.splice(empty_tiles_checkPos_index, 1, {"position": current_pos});
-                tiles.splice(i,1,{"position": check_pos, "tile_value": current_value} );
+                empty_tiles.splice(empty_tiles_checkPos_index, 1, { "position": current_pos });
+                tiles.splice(i, 1, { "position": check_pos, "tile_value": current_value });
 
                 //resetting i
                 i = tiles.findIndex(obj => obj.position == check_pos);
