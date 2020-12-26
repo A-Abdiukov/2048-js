@@ -208,6 +208,7 @@ function mergeR() {
             //if it is not an empty tile
             else {
                 find_tile = tiles.find(obj => obj.position == check_pos);
+                try{
                 if (find_tile.tile_value == current_value) {
                     //setting the tile
                     let tile_number = current_value.split('_')[1];
@@ -218,6 +219,7 @@ function mergeR() {
                     document.getElementById(current_pos).classList.remove(current_value);
                     tiles.splice(i, 1);
                 }
+            }catch{};
                 //exiting the loop by stating that b = 5
                 b = 5;
             }
