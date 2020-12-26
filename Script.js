@@ -189,20 +189,15 @@ function mergeR() {
 
             //if it is an empty tile
             if (empty_tiles_checkPos_index != -1) {
-                //adding an object
-                tiles = tiles.concat({ "position": check_pos, "tile_value": current_value });
 
-                //removing the object
+                //removing and adding
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.push({ "position": current_pos });
-
-                empty_tiles.splice(empty_tiles_checkPos_index, 1);
-                tiles.splice(i, 1);
+                empty_tiles.splice(empty_tiles_checkPos_index, 1, {"position": current_pos});
+                tiles.splice(i,1,{"position": check_pos, "tile_value": current_value} );
 
                 //resetting i
                 i = tiles.findIndex(obj => obj.position == check_pos);
                 current_pos = tiles[i].position;
-                current_value = tiles[i].tile_value;
             }
             //if it is not an empty tile
             else {
@@ -246,20 +241,15 @@ function mergeL() {
 
             //if it is an empty tile
             if (empty_tiles_checkPos_index != -1) {
-                //adding an object
-                tiles = tiles.concat({ "position": check_pos, "tile_value": current_value });
 
-                //removing the object
+                //removing and adding
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.push({ "position": current_pos })
-
-                empty_tiles.splice(empty_tiles_checkPos_index, 1);
-                tiles.splice(i, 1);
+                empty_tiles.splice(empty_tiles_checkPos_index, 1, {"position": current_pos});
+                tiles.splice(i,1,{"position": check_pos, "tile_value": current_value} );
 
                 //resetting i
                 i = tiles.findIndex(obj => obj.position == check_pos);
                 current_pos = tiles[i].position;
-                current_value = tiles[i].tile_value;
             }
             //if it is not an empty tile
             else {
