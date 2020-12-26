@@ -177,7 +177,7 @@ hammertime.on("swipeup", function (event) {
 //-------------------------
 
 function mergeR() {
-    for (let c = 0; c < tiles.length; c++) {
+    for (c = 0; c < tiles.length; c++) {
         let i = c;
         let current_pos = tiles[i].position;
         let current_value = tiles[i].tile_value;
@@ -194,7 +194,7 @@ function mergeR() {
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.push({"position":current_pos})
+                empty_tiles.push({ "position": current_pos })
 
                 empty_tiles.splice(empty_tiles_checkPos_index, 1);
                 tiles.splice(i, 1);
@@ -215,7 +215,7 @@ function mergeR() {
                         find_tile.tile_value = new_tile;
 
                         //removing the tile
-                        empty_tiles.push({"position":current_pos})
+                        empty_tiles.push({ "position": current_pos })
                         document.getElementById(current_pos).classList.remove(current_value);
                         tiles.splice(i, 1);
                     }
@@ -251,7 +251,7 @@ function mergeL() {
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
-                empty_tiles.push({"position":current_pos})
+                empty_tiles.push({ "position": current_pos })
 
                 empty_tiles.splice(empty_tiles_checkPos_index, 1);
                 tiles.splice(i, 1);
@@ -272,7 +272,7 @@ function mergeL() {
                         find_tile.tile_value = new_tile;
 
                         //removing the tile
-                        empty_tiles.push({"position":current_pos})
+                        empty_tiles.push({ "position": current_pos })
                         document.getElementById(current_pos).classList.remove(current_value);
                         tiles.splice(i, 1);
                     }
