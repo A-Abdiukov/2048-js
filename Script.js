@@ -177,7 +177,7 @@ hammertime.on("swipeup", function (event) {
 //-------------------------
 
 function mergeR() {
-    for (c = 0; c < tiles.length; c++) {
+    for (let c = 0; c < tiles.length; c++) {
         let i = c;
         let current_pos = tiles[i].position;
         let current_value = tiles[i].tile_value;
@@ -190,7 +190,7 @@ function mergeR() {
             //if it is an empty tile
             if (empty_tiles_checkPos_index != -1) {
                 //adding an object
-                tiles.concat({ "position": check_pos, "tile_value": current_value });
+                tiles = tiles.concat({ "position": check_pos, "tile_value": current_value });
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
@@ -247,7 +247,7 @@ function mergeL() {
             //if it is an empty tile
             if (empty_tiles_checkPos_index != -1) {
                 //adding an object
-                tiles.concat({ "position": check_pos, "tile_value": current_value });
+                tiles = tiles.concat({ "position": check_pos, "tile_value": current_value });
 
                 //removing the object
                 document.getElementById(current_pos).classList.remove(current_value);
