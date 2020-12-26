@@ -203,13 +203,13 @@ function mergeR() {
                 find_tile = tiles.findIndex(obj => obj.position == check_pos);
                 if (tiles[find_tile].tile_value == current_value) {
                     //setting the tile
+                    document.getElementById(current_pos).classList.remove(current_value);
                     let tile_number = current_value.split('_')[1];
                     let new_tile = 'tile_' + tile_number * 2;
                     tiles[find_tile].tile_value = new_tile;
 
                     //removing the tile
                     empty_tiles.push({ "position": current_pos })
-                    document.getElementById(current_pos).classList.remove(current_value);
                     tiles.splice(i, 1);
 
                     //reducing i by 1, as we removed 1 tile
