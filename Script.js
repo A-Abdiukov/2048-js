@@ -149,26 +149,23 @@ hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 hammertime.on("swiperight", function (event) {
     mergeR();
     loadTiles();
-    alert("Right swipe!");
 });
 
 
 hammertime.on("swipeleft", function (event) {
     mergeL();
     loadTiles();
-    alert("Left swipe!");
 });
 
 
 hammertime.on("swipedown", function (event) {
-    alert("Down swipe!");
-    // mergeD();
+    mergeD();
+    loadTiles();
 });
 
 hammertime.on("swipeup", function (event) {
-    alert("Up swipe!");
-    // mergeUp();
-
+    mergeUp();
+    loadTiles();
 });
 
 //-------------------------
@@ -225,8 +222,51 @@ function mergeR() {
 
 
 function mergeD() {
+    for (let c = 0; c < tiles.length; c++) {
+        let i = c;
+        let current_pos = tiles[i].position;
+        let current_value = tiles[i].tile_value;
 
+        for (let b = +current_pos.charAt(0) + 1; b < 8; b++) {
+            //checking
+            let check_pos = b + current_pos[1] + current_pos[2];
+            let empty_tiles_checkPos_index = empty_tiles.findIndex(obj => obj.position == check_pos);
 
+            //if it is an empty tile
+            if (empty_tiles_checkPos_index != -1) {
+
+                //removing and adding
+                document.getElementById(current_pos).classList.remove(current_value);
+                empty_tiles.splice(empty_tiles_checkPos_index, 1, { "position": current_pos });
+                tiles.splice(i, 1, { "position": check_pos, "tile_value": current_value });
+
+                //resetting i
+                i = tiles.findIndex(obj => obj.position == check_pos);
+                current_pos = tiles[i].position;
+            }
+            //if it is not an empty tile
+            else {
+                find_tile = tiles.findIndex(obj => obj.position == check_pos);
+                if (tiles[find_tile].tile_value == current_value) {
+                    //setting the tile
+                    document.getElementById(current_pos).classList.remove(current_value);
+                    document.getElementById(tiles[find_tile].position).classList.remove(current_value);
+                    let tile_number = current_value.split('_')[1];
+                    let new_tile = 'tile_' + tile_number * 2;
+                    tiles[find_tile].tile_value = new_tile;
+
+                    //removing the tile
+                    empty_tiles.push({ "position": current_pos })
+                    tiles.splice(i, 1);
+
+                    //reducing i by 1, as we removed 1 tile
+                    i--;
+                }
+                //exiting the loop by stating that b = 8
+                b = 8;
+            }
+        }
+    }
 }
 
 function mergeL() {
@@ -279,14 +319,52 @@ function mergeL() {
 
 
 function mergeUp() {
+    for (let c = 0; c < tiles.length; c++) {
+        let i = c;
+        let current_pos = tiles[i].position;
+        let current_value = tiles[i].tile_value;
 
+        for (let b = +current_pos.charAt(0) - 1; b > -1; b--) {
+            //checking
+            let check_pos = b + current_pos[1] + current_pos[2];
+            let empty_tiles_checkPos_index = empty_tiles.findIndex(obj => obj.position == check_pos);
 
+            //if it is an empty tile
+            if (empty_tiles_checkPos_index != -1) {
+
+                //removing and adding
+                document.getElementById(current_pos).classList.remove(current_value);
+                empty_tiles.splice(empty_tiles_checkPos_index, 1, { "position": current_pos });
+                tiles.splice(i, 1, { "position": check_pos, "tile_value": current_value });
+
+                //resetting i
+                i = tiles.findIndex(obj => obj.position == check_pos);
+                current_pos = tiles[i].position;
+            }
+            //if it is not an empty tile
+            else {
+                find_tile = tiles.findIndex(obj => obj.position == check_pos);
+                if (tiles[find_tile].tile_value == current_value) {
+                    //setting the tile
+                    document.getElementById(current_pos).classList.remove(current_value);
+                    document.getElementById(tiles[find_tile].position).classList.remove(current_value);
+                    let tile_number = current_value.split('_')[1];
+                    let new_tile = 'tile_' + tile_number * 2;
+                    tiles[find_tile].tile_value = new_tile;
+
+                    //removing the tile
+                    empty_tiles.push({ "position": current_pos })
+                    tiles.splice(i, 1);
+
+                    //reducing i by 1, as we removed 1 tile
+                    i--;
+                }
+                //exiting the loop by stating that b = -1
+                b = -1;
+            }
+        }
+    }
 }
-
-
-
-
-
 
 
 
