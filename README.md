@@ -1,4 +1,8 @@
-# 2048-js main branch
+# To launch the app, open index.html in any up-to-date browser.
+# Make sure to have JavaScript enabled.
+# Movement is done by swiping with mouse
 
-# The project is done by:
-# Julie, Naiem and Ash : )
+# Credits : 
+# https://github.com/NaiemA
+# https://github.com/Julie-Lam
+# https://github.com/A-Abdiukov
