@@ -58,7 +58,8 @@ function newNumber() {
         tiles.push({ "position": empty_tiles[new_tile_position].position, "tile_value": new_tile_value },);
         empty_tiles.splice(new_tile_position, 1);
     } else {
-        alert("Tiles are full. You have lost :( ");
+        alert("Tiles are full. You have lost :( \nResetting the game");
+        resetID();
     }
 }
 
@@ -149,23 +150,27 @@ hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 hammertime.on("swiperight", function (event) {
     mergeR();
     loadTiles();
+    newNumber();
 });
 
 
 hammertime.on("swipeleft", function (event) {
     mergeL();
     loadTiles();
+    newNumber();
 });
 
 
 hammertime.on("swipedown", function (event) {
     mergeD();
     loadTiles();
+    newNumber();
 });
 
 hammertime.on("swipeup", function (event) {
     mergeUp();
     loadTiles();
+    newNumber();
 });
 
 //-------------------------
@@ -364,35 +369,4 @@ function mergeUp() {
             }
         }
     }
-}
-
-
-
-//-----------------------------
-// NOT FINISHED CODE IS BELOW
-//-----------------------------
-
-
-//cell ID is a memeber of 3D materix first 2 nubmers for position on the grid 
-//the third number is 0 for empty cells or 1 for cells occupied by a tile  (row,col,occ)
-
-function resetCell(ID) {
-    //takes the id of the cell
-    //removes the inner text withing div
-    //removes styling class (tile_xxx)
-
-}
-
-
-
-function mergeCenter() { //merge 3 horizontal cells into the center
-
-}
-
-function blinkingBorder() { //will be used in the serving row for new tiles until user choses a location
-
-}
-
-function clicked(ID) { //takes the id of the cell that has been clicked
-    //if id end with 1 (ie, cell is occuppied, do nothing)
 }
